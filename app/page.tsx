@@ -198,7 +198,7 @@ export default function RetellAI() {
               <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
                 <div className="w-4 h-4 bg-white rounded-sm"></div>
               </div>
-              <span className="text-xl font-bold text-gray-900">Retell AI</span>
+              <span className="text-xl font-bold text-gray-900">Voice Agent</span>
             </div>
 
             <nav className="hidden lg:flex items-center gap-8">
@@ -846,7 +846,7 @@ export default function RetellAI() {
                 <p className="text-sm font-semibold text-blue-600 mb-2 tracking-wider text-center">TESTIMONIALS</p>
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-16">
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 lg:mb-0">
-                    See Why Over 3000+ Businesses Trust Retell AI
+                    See Why Over 3000+ Businesses Trust Voice Agent
                   </h2>
                   <Button
                     variant="outline"
@@ -909,7 +909,7 @@ export default function RetellAI() {
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform Your Call Operations?</h2>
             <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-              Join thousands of companies already using Retell AI to automate their voice interactions and deliver
+              Join thousands of companies already using Voice Agent to automate their voice interactions and deliver
               exceptional customer experiences with real-time metrics and seamless integrations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -937,7 +937,7 @@ export default function RetellAI() {
                   <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
                     <div className="w-4 h-4 bg-white rounded-sm"></div>
                   </div>
-                  <span className="text-xl font-bold text-gray-900">Retell AI</span>
+                  <span className="text-xl font-bold text-gray-900">Voice Agent</span>
                 </div>
                 <p className="text-gray-600 mb-4">
                   The leading platform for building production-ready AI voice agents at scale with real-time metrics and
@@ -975,7 +975,7 @@ export default function RetellAI() {
             </div>
 
             <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
-              <p className="text-gray-600 text-sm">© 2024 Retell AI. All rights reserved.</p>
+              <p className="text-gray-600 text-sm">© 2024 Voice Agent. All rights reserved.</p>
               <div className="flex gap-6 mt-4 md:mt-0">
                 {["Twitter", "LinkedIn", "GitHub"].map((social, index) => (
                   <a key={index} href="#" className="text-gray-400 hover:text-gray-600 transition-all hover:scale-110">

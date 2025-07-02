@@ -5,7 +5,7 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'App',
   description: 'Created with retellai',
-  generator: 'RetellAI',
+  generator: 'Voice Agent',
 }
 
 export default function RootLayout({
