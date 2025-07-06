@@ -36,12 +36,14 @@ export function ParticleSystem() {
           x: (particle.x + particle.vx + window.innerWidth) % window.innerWidth,
           y: (particle.y + particle.vy + window.innerHeight) % window.innerHeight,
           opacity: Math.sin(Date.now() * 0.001 + particle.id) * 0.3 + 0.5,
-        })),
+        }))
       )
     }, 50)
 
     return () => clearInterval(interval)
   }, [])
+
+  if (particles.length === 0) return null
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -138,16 +140,20 @@ export function GlowingOrb({ size = 200, color = "blue" }: { size?: number; colo
     orange: "from-orange-400/30 to-red-400/30",
   }
 
-  // Use a deterministic animation duration based on size and color to avoid hydration errors
-  const colorIndex = Object.keys(colorMap).indexOf(color)
-  const duration = 6 + ((size % 4) + colorIndex) % 4; // 6s to 9s
+  const [duration, setDuration] = useState("8s")
+
+  useEffect(() => {
+    const randomDuration = (6 + Math.random() * 4).toFixed(2)
+    setDuration(`${randomDuration}s`)
+  }, [])
+
   return (
     <div
       className={`absolute rounded-full bg-gradient-to-br ${colorMap[color as keyof typeof colorMap]} blur-3xl animate-pulse`}
       style={{
         width: `${size}px`,
         height: `${size}px`,
-        animation: `float ${duration}s ease-in-out infinite`,
+        animation: `float ${duration} ease-in-out infinite`,
       }}
     />
   )
@@ -178,14 +184,18 @@ export function TypewriterText({ text, speed = 100 }: { text: string; speed?: nu
 
 export function RippleEffect({ trigger }: { trigger: boolean }) {
   const [ripples, setRipples] = useState<Array<{ id: number; x: number; y: number }>>([])
+  const [counter, setCounter] = useState(0)
 
   useEffect(() => {
     if (trigger) {
+      setCounter((prev) => prev + 1)
+
       const newRipple = {
-        id: Date.now(),
+        id: counter,
         x: Math.random() * 100,
         y: Math.random() * 100,
       }
+
       setRipples((prev) => [...prev, newRipple])
 
       setTimeout(() => {

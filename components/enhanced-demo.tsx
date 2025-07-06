@@ -171,8 +171,8 @@ export function EnhancedDemo({ isOpen, onClose }: EnhancedDemoProps) {
   }, [isCallActive])
 
   useEffect(() => {
-    let interval: ReturnType<typeof setInterval>
-    let messageInterval: ReturnType<typeof setTimeout>
+    let interval: NodeJS.Timeout
+    let messageInterval: NodeJS.Timeout
 
     if (isCallActive) {
       interval = setInterval(() => {
@@ -189,7 +189,6 @@ export function EnhancedDemo({ isOpen, onClose }: EnhancedDemoProps) {
 
       // Simulate conversation
       let messageIndex = 0
-      
       const playMessages = () => {
         if (messageIndex < selectedScenario.messages.length) {
           const message = selectedScenario.messages[messageIndex]
@@ -228,12 +227,11 @@ export function EnhancedDemo({ isOpen, onClose }: EnhancedDemoProps) {
         }
       }
 
-      messageInterval = setTimeout(playMessages, 1000)
+      setTimeout(playMessages, 1000)
     }
 
     return () => {
       if (interval) clearInterval(interval)
-      if (messageInterval) clearTimeout(messageInterval)
     }
   }, [isCallActive, selectedScenario])
 
