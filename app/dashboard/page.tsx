@@ -42,13 +42,13 @@ export default function DashboardPage() {
     {
       pid: "1",
       productname: "ABC Roofing",
-      productdescription: "ABC Roofing is a trusted roofing company specializing in residential and commercial roof installation, repair, and maintenance. With years of experience and a commitment to quality craftsmanship, we provide durable, reliable roofing solutions tailored to your needs.",
+      productdescription: "Hi, This is John with roofers4us. We will be in your neighborhood tomorrow and wanted to come by for a free inspection.",
       productkeydetails: "Roofing, 24/7 support, Installation, Repair",
     },
     {
       pid: "2",
       productname: "CitrusIQ",
-      productdescription: "Our AI-powered app converts phone calls into accurate text transcripts and analyzes conversations to extract key insights, trends, and sentiment—helping businesses improve communication and decision-making.",
+      productdescription: "Hi, This is John with CitrusIQ. Our AI-powered app converts phone calls into accurate text transcripts and analyzes conversations to extract key insights, trends, and sentiment—helping businesses improve communication and decision-making. Are you interested?",
       productkeydetails: "Transcription, Call analysis, Insights, Sentiment",
     },
   ])
@@ -684,7 +684,7 @@ export default function DashboardPage() {
                               Name
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
-                              Description
+                              Call Script
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
                               Key Details
