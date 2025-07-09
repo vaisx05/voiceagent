@@ -65,7 +65,7 @@ export default function LoginPage() {
               <span className="text-2xl font-bold text-gray-900">Voice Agent</span>
             </div>
             <CardTitle className="text-2xl font-bold text-gray-900">Welcome Back</CardTitle>
-            <p className="text-gray-600 mt-2">Sign in to your Call Agent dashboard</p>
+            <p className="text-gray-600 mt-2">Sign in to your Voice Agent dashboard</p>
           </CardHeader>
 
           <CardContent>
