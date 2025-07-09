@@ -54,9 +54,8 @@ function AnimatedSection({
   return (
     <div
       ref={ref}
-      className={`transition-all duration-1000 ease-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      } ${className}`}
+      className={`transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        } ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -67,7 +66,7 @@ function AnimatedSection({
 export default function CallAgent() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isDemoOpen, setIsDemoOpen] = useState(false)
-    const [isLoginOpen, setIsLoginOpen] = useState(false) // Add this
+  const [isLoginOpen, setIsLoginOpen] = useState(false) // Add this
 
 
   return (
@@ -228,7 +227,7 @@ export default function CallAgent() {
                 CONTACT SALES
               </Button> */}
               <Button
-                className="bg-gradient-to-r from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 text-white font-medium hover:scale-105 transition-all shadow-lg"
+                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium hover:scale-105 transition-all shadow-lg"
                 onClick={() => (window.location.href = "/login")}
               >
                 LOG IN
