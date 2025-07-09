@@ -37,7 +37,7 @@ interface CallHistory {
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState("makeCall")
   const [user, setUser] = useState<User>({ FirstName: "John", LastName: "Doe", role: "Agent" })
-  
+
   const [products, setProducts] = useState<Product[]>([
     {
       pid: "1",
@@ -73,6 +73,7 @@ export default function DashboardPage() {
     },
   ])
   const [callForm, setCallForm] = useState({ phone_number: "", product_id: "" })
+  const [callError, setCallError] = useState("")
   const [productForm, setProductForm] = useState({ productname: "", productdescription: "", productkeydetails: "" })
   const [callResult, setCallResult] = useState("")
   const [isAdmin] = useState(true) // For demo purposes
@@ -102,11 +103,52 @@ export default function DashboardPage() {
     }
   }, [])
 
-  const handleMakeCall = async (e: React.FormEvent) => {
-    e.preventDefault()
+  // Add this helper for US phone validation and formatting
+  const formatUSPhone = (value: string) => {
+    // Remove all non-digit except +
+    let digits = value.replace(/[^\d+]/g, "")
+    // Always start with +1
+    if (!digits.startsWith("+1")) {
+      digits = "+1" + digits.replace(/^\+?1?/, "")
+    }
+    // Limit to +1 and 10 digits
+    digits = digits.slice(0, 12)
+    return digits
+  }
 
-    if (!callForm.phone_number.startsWith("+")) {
-      setCallResult("Phone number must start with + (country code)")
+  // Format as +1 (XXX) XXX-XXXX while typing
+  const formatUSPhonePretty = (value: string) => {
+    // Remove all non-digit except +
+    let digits = value.replace(/[^\d]/g, "")
+    if (digits === "") return ""
+    if (digits.startsWith("1")) digits = digits.slice(1)
+    digits = digits.slice(0, 10)
+    let formatted = "+1"
+    if (digits.length > 0) formatted += " ("
+    if (digits.length >= 1) formatted += digits.slice(0, 3)
+    if (digits.length >= 3) formatted += ") "
+    if (digits.length >= 4) formatted += digits.slice(3, 6)
+    if (digits.length >= 6) formatted += "-"
+    if (digits.length >= 7) formatted += digits.slice(6, 10)
+    return formatted
+  }
+
+  // US phone input: always starts with +1, only digits after
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let digits = e.target.value.replace(/[^\d]/g, "")
+    // Remove leading 1 if present (to avoid +11...)
+    if (digits.startsWith("1")) digits = digits.slice(1)
+    digits = digits.slice(0, 10)
+    let formatted = digits.length > 0 ? `+1${digits}` : ""
+    setCallForm({ ...callForm, phone_number: formatted })
+    setCallError("")
+  }
+
+  const handleMakeCall = (e: React.FormEvent) => {
+    e.preventDefault()
+    // US number validation: must be +1 and 12 chars (+1XXXXXXXXXX)
+    if (!/^\+1\d{10}$/.test(callForm.phone_number)) {
+      setCallError("Please enter a valid US phone number (+1XXXXXXXXXX).")
       return
     }
 
@@ -218,7 +260,7 @@ export default function DashboardPage() {
     setBatchRows([])
     setBatchFile(null)
     if (batchFileInputRef.current) batchFileInputRef.current.value = ""
-    
+
     // Show snackbar message
     setSnackbarMsg(`Batch call initiated for ${batchRows.length} numbers.`)
     setTimeout(() => setSnackbarMsg(""), 3000) // Hide after 3 seconds
@@ -273,8 +315,8 @@ export default function DashboardPage() {
               setSidebarOpen(false)
             }}
             className={`flex items-center gap-3 px-4 py-3 font-medium rounded-lg transition-all w-full text-left ${activeTab === tab.id
-                ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow"
-                : "text-gray-700 hover:bg-gray-100"
+              ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow"
+              : "text-gray-700 hover:bg-gray-100"
               }`}
           >
             {tab.icon}
@@ -286,11 +328,11 @@ export default function DashboardPage() {
       {/* Header */}
       <header className="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg relative z-10">
         <div className="max-w-7xl mx-auto px-0 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1"> {/* reduced gap from 2 to 1 */}
             {/* Hamburger menu at the absolute left edge */}
             <button
-              className="p-2"
-              style={{ marginLeft: 0 }}
+              className="p-2 ml-0" // ensure no margin left
+              style={{ marginLeft: 0, paddingLeft: 0 }} // extra safety for left edge
               onClick={() => setSidebarOpen(true)}
               aria-label="Open sidebar"
             >
@@ -336,36 +378,40 @@ export default function DashboardPage() {
                   </CardHeader>
                   <CardContent>
                     <form onSubmit={handleMakeCall} className="space-y-6">
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                          <Label htmlFor="phone_number">Phone Number (with country code)</Label>
-                          <Input
-                            id="phone_number"
-                            type="tel"
-                            placeholder="+1234567890"
-                            value={callForm.phone_number}
-                            onChange={(e) => setCallForm({ ...callForm, phone_number: e.target.value })}
-                            required
-                            className="h-12"
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="product_id">Select Product</Label>
-                          <select
-                            id="product_id"
-                            value={callForm.product_id}
-                            onChange={(e) => setCallForm({ ...callForm, product_id: e.target.value })}
-                            required
-                            className="h-12 w-full border border-gray-300 rounded-lg px-3"
-                          >
-                            <option value="">Select a product</option>
-                            {products.map((product) => (
-                              <option key={product.pid} value={product.pid}>
-                                {product.productname}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="phone_number">Phone Number (US only)</Label>
+                        <Input
+                          id="phone_number"
+                          type="tel"
+                          placeholder="+1XXXXXXXXXX"
+                          value={callForm.phone_number}
+                          onChange={handlePhoneChange}
+                          required
+                          className="h-12 w-64"
+                          maxLength={12}
+                        />
+                        {callError && (
+                          <div className="text-red-600 text-xs mt-1">{callError}</div>
+                        )}
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="product_id" className="block mb-1 font-medium">
+                          Select Product
+                        </Label>
+                        <select
+                          id="product_id"
+                          value={callForm.product_id}
+                          onChange={(e) => setCallForm({ ...callForm, product_id: e.target.value })}
+                          required
+                          className="h-12 w-64 border border-gray-300 rounded-lg px-3"
+                        >
+                          <option value="">Select a product</option>
+                          {products.map((product) => (
+                            <option key={product.pid} value={product.pid}>
+                              {product.productname}
+                            </option>
+                          ))}
+                        </select>
                       </div>
                       <Button
                         type="submit"
@@ -580,8 +626,8 @@ export default function DashboardPage() {
                             <td className="px-6 py-4 whitespace-nowrap text-sm">
                               <span
                                 className={`inline-block px-2 py-1 rounded-full text-xs font-semibold ${call.status === "completed"
-                                    ? "bg-green-100 text-green-700"
-                                    : "bg-yellow-100 text-yellow-700"
+                                  ? "bg-green-100 text-green-700"
+                                  : "bg-yellow-100 text-yellow-700"
                                   }`}
                               >
                                 {call.status.charAt(0).toUpperCase() + call.status.slice(1)}
@@ -590,8 +636,8 @@ export default function DashboardPage() {
                             <td className="px-6 py-4 whitespace-nowrap text-sm">
                               <span
                                 className={`inline-block px-2 py-1 rounded-full text-xs font-semibold ${call.transferred_to_agent === "y"
-                                    ? "bg-blue-100 text-blue-700"
-                                    : "bg-gray-100 text-gray-500"
+                                  ? "bg-blue-100 text-blue-700"
+                                  : "bg-gray-100 text-gray-500"
                                   }`}
                               >
                                 {call.transferred_to_agent === "y" ? "Yes" : "No"}
@@ -890,11 +936,11 @@ export default function DashboardPage() {
         </main>
       </div>
 
-{snackbarMsg && (
-  <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in font-semibold">
-    {snackbarMsg}
-  </div>
-)}
+      {snackbarMsg && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in font-semibold">
+          {snackbarMsg}
+        </div>
+      )}
     </div>
   )
 }
