@@ -47,16 +47,16 @@ export default function DashboardPage() {
     },
     {
       pid: "2",
-      productname: "Marketing Automation Suite",
-      productdescription: "Complete marketing automation platform for lead generation and nurturing",
-      productkeydetails: "Email campaigns, Lead scoring, Social media integration, ROI tracking",
+      productname: "CitrusIQ",
+      productdescription: "Our AI-powered app converts phone calls into accurate text transcripts and analyzes conversations to extract key insights, trends, and sentiment—helping businesses improve communication and decision-making.",
+      productkeydetails: "Transcription, Call analysis, Insights, Sentiment",
     },
   ])
   const [callHistory, setCallHistory] = useState<CallHistory[]>([
     {
       id: "1",
       mobilenumber: "+1234567890",
-      productname: "Premium CRM Software",
+      productname: "ABC Roofing",
       call_sid: "CA1234567890abcdef",
       status: "completed",
       timestamp: "2024-01-07 14:30:00",
@@ -65,7 +65,7 @@ export default function DashboardPage() {
     {
       id: "2",
       mobilenumber: "+1987654321",
-      productname: "Marketing Automation Suite",
+      productname: "CitrusIQ",
       call_sid: "CA0987654321fedcba",
       status: "completed",
       timestamp: "2024-01-07 13:15:00",
