@@ -62,7 +62,7 @@ export default function LoginPage() {
               <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
                 <PhoneCall className="w-6 h-6 text-white" />
               </div>
-              <span className="text-2xl font-bold text-gray-900">Call Agent AI</span>
+              <span className="text-2xl font-bold text-gray-900">Voice Agent</span>
             </div>
             <CardTitle className="text-2xl font-bold text-gray-900">Welcome Back</CardTitle>
             <p className="text-gray-600 mt-2">Sign in to your Call Agent dashboard</p>

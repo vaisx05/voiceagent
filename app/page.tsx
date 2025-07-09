@@ -67,6 +67,8 @@ function AnimatedSection({
 export default function CallAgent() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isDemoOpen, setIsDemoOpen] = useState(false)
+    const [isLoginOpen, setIsLoginOpen] = useState(false) // Add this
+
 
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
@@ -169,7 +171,7 @@ export default function CallAgent() {
       `}</style>
 
       {/* Top Banner */}
-      <AnimatedSection>
+      {/* <AnimatedSection>
         <div className="bg-gradient-to-r from-orange-100 via-pink-100 to-blue-100 px-4 py-3 text-center border-b animate-slideIn">
           <div className="flex items-center justify-center gap-2 text-sm">
             <Sparkles className="w-4 h-4 text-orange-600 animate-pulse" />
@@ -183,7 +185,7 @@ export default function CallAgent() {
             </a>
           </div>
         </div>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       {/* Animated Background */}
       <AnimatedWaves />
@@ -200,7 +202,7 @@ export default function CallAgent() {
               <span className="text-xl font-bold text-gray-900">VoiceAgent</span>
             </div>
 
-            <nav className="hidden lg:flex items-center gap-8">
+            {/* <nav className="hidden lg:flex items-center gap-8">
               {["Features", "Solutions", "Pricing"].map((item) => (
                 <div
                   key={item}
@@ -216,29 +218,29 @@ export default function CallAgent() {
               <a href="#" className="text-gray-700 hover:text-gray-900 font-medium transition-all hover:scale-105">
                 Support
               </a>
-            </nav>
+            </nav> */}
 
             <div className="flex items-center gap-3">
-              <Button
+              {/* <Button
                 variant="outline"
                 className="hidden md:inline-flex font-medium bg-transparent hover:bg-gray-50 hover:scale-105 transition-all"
               >
                 CONTACT SALES
-              </Button>
+              </Button> */}
               <Button
                 className="bg-gradient-to-r from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 text-white font-medium hover:scale-105 transition-all shadow-lg"
                 onClick={() => (window.location.href = "/login")}
               >
                 LOG IN
               </Button>
-              <Button
+              {/* <Button
                 variant="ghost"
                 size="sm"
                 className="lg:hidden hover:scale-105 transition-transform"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </Button>
+              </Button> */}
             </div>
           </div>
         </header>
@@ -250,7 +252,7 @@ export default function CallAgent() {
           <div className="fixed inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
           <div className="fixed top-0 right-0 h-full w-80 glass-effect shadow-xl p-6 animate-slideUp">
             <nav className="space-y-4">
-              {["Features", "Solutions", "Pricing", "Documentation", "Support"].map((item) => (
+              {/* {["Features", "Solutions", "Pricing", "Documentation", "Support"].map((item) => (
                 <a
                   key={item}
                   href="#"
@@ -258,11 +260,11 @@ export default function CallAgent() {
                 >
                   {item}
                 </a>
-              ))}
+              ))} */}
               <div className="pt-4 space-y-3">
-                <Button variant="outline" className="w-full bg-transparent hover:scale-105 transition-transform">
+                {/* <Button variant="outline" className="w-full bg-transparent hover:scale-105 transition-transform">
                   CONTACT SALES
-                </Button>
+                </Button> */}
                 <Button
                   className="w-full bg-gradient-to-r from-gray-900 to-gray-800 hover:scale-105 transition-transform"
                   onClick={() => (window.location.href = "/login")}
@@ -301,7 +303,7 @@ export default function CallAgent() {
                 </p>
               </AnimatedSection>
 
-              <AnimatedSection delay={800}>
+              {/* <AnimatedSection delay={800}>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-20">
                   <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-2xl hover:scale-105 transition-all group shadow-xl animate-glow">
                     START FREE TRIAL
@@ -314,7 +316,7 @@ export default function CallAgent() {
                     WATCH DEMO
                   </Button>
                 </div>
-              </AnimatedSection>
+              </AnimatedSection> */}
             </div>
 
             <div className="flex-1 relative">
@@ -334,7 +336,7 @@ export default function CallAgent() {
       </main>
 
       {/* Trusted By Section */}
-      <AnimatedSection>
+      {/* <AnimatedSection>
         <section className="relative z-10 px-4 py-12 md:px-6 bg-gray-50/50">
           <div className="max-w-7xl mx-auto">
             <p className="text-center text-sm font-semibold text-gray-500 mb-12 tracking-wider">
@@ -378,10 +380,10 @@ export default function CallAgent() {
             </AnimatedSection>
           </div>
         </section>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       {/* Key Features Section */}
-      <AnimatedSection>
+      {/* <AnimatedSection>
         <section className="relative z-10 px-4 py-20 md:px-6">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection>
@@ -494,10 +496,10 @@ export default function CallAgent() {
             </div>
           </div>
         </section>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       {/* How It Works Section */}
-      <AnimatedSection>
+      {/* <AnimatedSection>
         <section className="relative z-10 px-4 py-20 md:px-6 bg-gradient-to-br from-blue-50/50 to-purple-50/30">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection>
@@ -581,10 +583,10 @@ export default function CallAgent() {
             </div>
           </div>
         </section>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       {/* Voice AI Demo Section */}
-      <AnimatedSection>
+      {/* <AnimatedSection>
         <section className="relative z-10 px-4 py-20 md:px-6">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection delay={600}>
@@ -616,10 +618,10 @@ export default function CallAgent() {
             </AnimatedSection>
           </div>
         </section>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       {/* Enterprise Features */}
-      <AnimatedSection>
+      {/* <AnimatedSection>
         <section className="relative z-10 px-4 py-20 md:px-6 bg-gradient-to-br from-gray-50 to-blue-50/30">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection>
@@ -713,160 +715,70 @@ export default function CallAgent() {
             </div>
           </div>
         </section>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
-      {/* Testimonials Section */}
-      <AnimatedSection>
-        <section className="relative z-10 px-4 py-20 md:px-6">
-          <div className="max-w-7xl mx-auto">
-            <AnimatedSection>
-              <div className="mb-4">
-                <p className="text-sm font-semibold text-blue-600 mb-2 tracking-wider text-center">SUCCESS STORIES</p>
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-16">
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 lg:mb-0">
-                    See Why 5000+ Sales Teams Choose Call Agent AI
-                  </h2>
-                  <Button
-                    variant="outline"
-                    className="hover:scale-105 transition-transform bg-white/80 backdrop-blur-sm shadow-lg"
-                  >
-                    VIEW ALL STORIES
-                  </Button>
-                </div>
-              </div>
-            </AnimatedSection>
 
-            <AnimatedSection delay={400}>
-              <Card className="border-0 shadow-2xl bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 text-white overflow-hidden hover-lift">
-                <CardContent className="p-12 lg:p-16 relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-                  <div className="relative z-10">
-                    <div className="max-w-4xl">
-                      <blockquote className="text-2xl lg:text-3xl font-medium mb-8 leading-relaxed">
-                        "Our AI agents now handle 80% of our outbound calls, qualifying leads 3x faster than our
-                        previous manual process. The seamless handoff to our sales team has increased our conversion
-                        rate by 45%."
-                      </blockquote>
-                      <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-                          <span className="font-bold text-xl">M</span>
-                        </div>
-                        <div>
-                          <div className="font-semibold text-lg">Michael Rodriguez</div>
-                          <div className="text-blue-200">VP of Sales, TechFlow Solutions</div>
-                        </div>
-                      </div>
-                    </div>
+      {/* Footer
+      // <AnimatedSection>
+      //   <footer className="relative z-10 bg-gray-50 px-4 py-16 md:px-6">
+      //     <div className="max-w-7xl mx-auto">
+      //       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      //         <div>
+      //           <div className="flex items-center gap-3 mb-6 hover-scale">
+      //             <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+      //               <PhoneCall className="w-4 h-4 text-white" />
+      //             </div>
+      //             <span className="text-xl font-bold text-gray-900">VoiceAgent</span>
+      //           </div>
+      //           <p className="text-gray-600 mb-4">
+      //             The leading platform for AI-powered outbound call automation. Qualify leads faster and boost
+      //             conversions with intelligent voice agents.
+      //           </p>
+      //         </div>
 
-                    {/* Enhanced Stats */}
-                    <div className="absolute right-8 top-8 space-y-4">
-                      <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center hover:scale-105 transition-transform">
-                        <div className="text-4xl font-bold text-orange-400 mb-2">3x</div>
-                        <div className="text-sm text-orange-200">Faster Lead Qualification</div>
-                      </div>
-                      <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center hover:scale-105 transition-transform">
-                        <div className="text-4xl font-bold text-green-400 mb-2">80%</div>
-                        <div className="text-sm text-green-200">Calls Automated</div>
-                      </div>
-                      <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center hover:scale-105 transition-transform">
-                        <div className="text-4xl font-bold text-blue-400 mb-2">45%</div>
-                        <div className="text-sm text-blue-200">Higher Conversion</div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </AnimatedSection>
-          </div>
-        </section>
-      </AnimatedSection>
+      //         {[
+      //           {
+      //             title: "Product",
+      //             links: ["Features", "Pricing", "API", "Integrations"],
+      //           },
+      //           {
+      //             title: "Resources",
+      //             links: ["Documentation", "Blog", "Case Studies", "Support"],
+      //           },
+      //           {
+      //             title: "Company",
+      //             links: ["About", "Careers", "Contact", "Privacy"],
+      //           },
+      //         ].map((section, index) => (
+      //           <div key={index}>
+      //             <h4 className="font-semibold text-gray-900 mb-4">{section.title}</h4>
+      //             <ul className="space-y-2 text-gray-600">
+      //               {section.links.map((link, linkIndex) => (
+      //                 <li key={linkIndex}>
+      //                   <a href="#" className="hover:text-gray-900 transition-colors hover:scale-105 inline-block">
+      //                     {link}
+      //                   </a>
+      //                 </li>
+      //               ))}
+      //             </ul>
+      //           </div>
+      //         ))}
+      //       </div>
 
-      {/* CTA Section */}
-      <AnimatedSection>
-        <section className="relative z-10 px-4 py-20 md:px-6 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-          <div className="max-w-4xl mx-auto text-center relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform Your Outbound Sales?</h2>
-            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-              Join thousands of sales teams already using VoiceAgent to automate their outbound calling, qualify leads
-              faster, and boost conversions without overloading their team.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-8 py-4 text-lg font-semibold hover:scale-105 transition-all shadow-xl rounded-xl">
-                Start Free Trial
-              </Button>
-              <Button
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg font-semibold bg-transparent hover:scale-105 transition-all rounded-xl"
-              >
-                Schedule Demo
-              </Button>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* Footer */}
-      <AnimatedSection>
-        <footer className="relative z-10 bg-gray-50 px-4 py-16 md:px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-              <div>
-                <div className="flex items-center gap-3 mb-6 hover-scale">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
-                    <PhoneCall className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="text-xl font-bold text-gray-900">VoiceAgent</span>
-                </div>
-                <p className="text-gray-600 mb-4">
-                  The leading platform for AI-powered outbound call automation. Qualify leads faster and boost
-                  conversions with intelligent voice agents.
-                </p>
-              </div>
-
-              {[
-                {
-                  title: "Product",
-                  links: ["Features", "Pricing", "API", "Integrations"],
-                },
-                {
-                  title: "Resources",
-                  links: ["Documentation", "Blog", "Case Studies", "Support"],
-                },
-                {
-                  title: "Company",
-                  links: ["About", "Careers", "Contact", "Privacy"],
-                },
-              ].map((section, index) => (
-                <div key={index}>
-                  <h4 className="font-semibold text-gray-900 mb-4">{section.title}</h4>
-                  <ul className="space-y-2 text-gray-600">
-                    {section.links.map((link, linkIndex) => (
-                      <li key={linkIndex}>
-                        <a href="#" className="hover:text-gray-900 transition-colors hover:scale-105 inline-block">
-                          {link}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
-              <p className="text-gray-600 text-sm">© 2024 VoiceAgent. All rights reserved.</p>
-              <div className="flex gap-6 mt-4 md:mt-0">
-                {["Twitter", "LinkedIn", "GitHub"].map((social, index) => (
-                  <a key={index} href="#" className="text-gray-400 hover:text-gray-600 transition-all hover:scale-110">
-                    <span className="sr-only">{social}</span>
-                    <div className="w-5 h-5 bg-gray-400 rounded hover:bg-gray-600 transition-colors"></div>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </footer>
-      </AnimatedSection>
+      //       <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
+      //         <p className="text-gray-600 text-sm">© 2024 VoiceAgent. All rights reserved.</p>
+      //         <div className="flex gap-6 mt-4 md:mt-0">
+      //           {["Twitter", "LinkedIn", "GitHub"].map((social, index) => (
+      //             <a key={index} href="#" className="text-gray-400 hover:text-gray-600 transition-all hover:scale-110">
+      //               <span className="sr-only">{social}</span>
+      //               <div className="w-5 h-5 bg-gray-400 rounded hover:bg-gray-600 transition-colors"></div>
+      //             </a>
+      //           ))}
+      //         </div>
+      //       </div>
+      //     </div>
+      //   </footer>
+      // </AnimatedSection> */}
 
       {/* Enhanced Demo Modal */}
       <EnhancedDemo isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
