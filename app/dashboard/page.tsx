@@ -41,9 +41,9 @@ export default function DashboardPage() {
   const [products, setProducts] = useState<Product[]>([
     {
       pid: "1",
-      productname: "Premium CRM Software",
-      productdescription: "Advanced customer relationship management solution with AI-powered insights",
-      productkeydetails: "Cloud-based, 24/7 support, Advanced analytics, Mobile app",
+      productname: "ABC Roofing",
+      productdescription: "ABC Roofing is a trusted roofing company specializing in residential and commercial roof installation, repair, and maintenance. With years of experience and a commitment to quality craftsmanship, we provide durable, reliable roofing solutions tailored to your needs.",
+      productkeydetails: "Roofing, 24/7 support, Installation, Repair",
     },
     {
       pid: "2",
